@@ -9,4 +9,6 @@
 /*/.settings/
 .project
 
-
+#nodejs
+node_modules/
+dist/

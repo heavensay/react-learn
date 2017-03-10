@@ -1,26 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { DatePicker, message } from 'antd';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      date: '',
-    };
-  }
-  handleChange(date) {
-    message.info('您选择的日期是: ' + date.toString());
-    this.setState({ date });
-  }
-  render() {
+var Layout = React.createClass({
+  render: function() {
     return (
-      <div style={{ width: 400, margin: '100px auto' }}>
-        <DatePicker onChange={value => this.handleChange(value)} />
-        <div style={{ marginTop: 20 }}>当前日期：{this.state.date.toString()}</div>
-      </div>
-    );
+    	<div style={{webkitBoxOrient: 'vertical',backgroundColor: '#00a0e9',boxAlign:'horizontal'}}>
+    		{
+    			React.Children.map(this.props.children, function (child) {
+          			return <div>{child}</div>;
+          		})
+        	}
+    	</div>
+    	);
   }
-}
+});
+	
+	
+ var Header = React.createClass({
+  render: function() {
+    return (
+    	<div  style={{ display:'-webkit-box',webkitBoxOrient: 'horizontal'}}>
+    		<div>content3</div>   
+    		<div>content4</div>
+    	</div>
+    	);
+  }
+});
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ var Content = React.createClass({
+  render: function() {
+    return (
+    	<div style={{backgroundColor: 'yellow'}}>
+    		{this.props.content}
+    		gggg
+    	</div>
+    	);
+  }
+});
+
+
+	ReactDOM.render(
+		<Layout>
+			<Header></Header>
+    		<Content content="kkk"></Content>
+		</Layout>
+	, document.getElementById('root'));
